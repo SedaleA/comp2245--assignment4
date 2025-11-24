@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function searchCountry() {
     const country = encodeURIComponent(countryInput.value.trim());
-
+    // Default lookup for countries
     fetch(`world.php?country=${country}`)
       .then((response) => response.text())
       .then((data) => {
@@ -17,11 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error(error);
       });
   }
-
+  // Function to search for cities
   function searchCities() {
     const country = encodeURIComponent(countryInput.value.trim());
 
-    // UPDATED: Now calls world.php with lookup=cities
     fetch(`world.php?country=${country}&lookup=cities`)
       .then((response) => response.text())
       .then((data) => {
@@ -32,11 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error(error);
       });
   }
-
-  // Search countries (Button)
+  // Event listeners
   lkupBtn.addEventListener("click", searchCountry);
 
-  // Search countries (Enter key)
   countryInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -44,6 +41,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Search cities (Button)
   lkupCityBtn.addEventListener("click", searchCities);
 });

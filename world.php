@@ -9,11 +9,9 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $country = $_GET['country'] ?? '';
-    $lookupType = $_GET['lookup'] ?? 'countries'; // default is countries
+    $lookupType = $_GET['lookup'] ?? 'countries'; 
 
-    // =========================
-    // COUNTRY LOOKUP (DEFAULT)
-    // =========================
+   
     if ($lookupType === 'countries') {
         if (!empty($country)) {
             $sql = "SELECT name, continent, independence_year, head_of_state
@@ -47,9 +45,7 @@ try {
         echo "</table>";
     }
 
-    // =========================
-    // CITY LOOKUP
-    // =========================
+   
     elseif ($lookupType === 'cities' && !empty($country)) {
 
         $sql = "SELECT cities.name AS city, cities.district, cities.population
